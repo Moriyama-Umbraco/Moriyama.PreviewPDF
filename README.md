@@ -22,7 +22,7 @@ You will need to add a property called `Thumbnail` with the alias of `thumbnail`
 
 Once added change the order so that **Thumbnail** is the first property
 
-![Media type configuration](/Screenshots/Screenshot 2024-01-05 164937.png)
+![media type configuration](/Screenshots/media-type-configuration.png "media type configuration")
 
 ### Contribution guidelines
 
