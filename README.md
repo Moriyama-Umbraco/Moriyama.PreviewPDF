@@ -31,10 +31,12 @@ If you choose to use the ABCpdf package, you will need to add or update the foll
 ```
 {
     "Umbraco": {
-        "TypeFinder": {
-        "AssembliesAcceptingLoadExceptions": "*",
-        "AdditionalAssemblyExclusionEntries": [ "WindowsBase", "PresentationFramework", "ReachFramework", "PresentationCore" ]
-      }
+        "CMS": {
+            "TypeFinder": {
+            "AssembliesAcceptingLoadExceptions": "*",
+            "AdditionalAssemblyExclusionEntries": [ "WindowsBase", "PresentationFramework", "ReachFramework", "PresentationCore" ]
+            }
+        }
     }
 }
 ```
