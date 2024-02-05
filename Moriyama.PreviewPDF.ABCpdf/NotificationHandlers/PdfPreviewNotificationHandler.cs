@@ -1,7 +1,4 @@
 ﻿using System.Drawing.Imaging;
-using System.Reflection;
-using Ghostscript.NET;
-using Ghostscript.NET.Rasterizer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -14,8 +11,9 @@ using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Strings;
 using Umbraco.Extensions;
+using WebSupergoo.ABCpdf13;
 
-namespace Moriyama.PreviewPDF.Ghostscript.NotificationHandlers
+namespace Moriyama.PreviewPDF.ABCpdf.NotificationHandlers
 {
     public class PdfPreviewNotificationHandler : INotificationHandler<MediaSavingNotification>
     {
@@ -52,25 +50,24 @@ namespace Moriyama.PreviewPDF.Ghostscript.NotificationHandlers
                             try
                             {
                                 _logger.LogInformation("Starting PDF thumbnail creation");
-                                var binPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                                var gsDllPath = Path.Combine(binPath, Environment.Is64BitProcess ? MoriyamaPreviewGhostscriptConstants.GhostscriptDll64 : MoriyamaPreviewGhostscriptConstants.GhostscriptDll32);
-                                var version = new GhostscriptVersionInfo(new Version(10, 02, 1), gsDllPath, string.Empty, GhostscriptLicense.GPL);
+                                Doc doc = new Doc();
 
-                                using (var rasterizer = new GhostscriptRasterizer())
+                                _logger.LogInformation("Getting PDF from file manager");
+                                doc.Read(_mediaFileManager.GetFile(entity, out _));
+
+                                doc.PageNumber = 1;
+                                doc.Rect.String = doc.CropBox.String;
+                                using (var memoryStream = new MemoryStream())
                                 {
-                                    var file = _mediaFileManager.GetFile(entity, out _);
-                                    rasterizer.Open(file, version, true);
-                                    var firstPageAsImage = rasterizer.GetPage(200, _configuration.PdfPageNumber);
+                                    _logger.LogInformation("Rendering page 1 of PDF");
+                                    var thumbnail = doc.Rendering.GetBitmap();
 
-                                    using (var memoryStream = new MemoryStream())
-                                    {
-                                        _logger.LogInformation("Creating PNG thumbnail and saving to memory stream");
-                                        firstPageAsImage.Save(memoryStream, ImageFormat.Png);
-                                        memoryStream.Position = 0;
+                                    _logger.LogInformation("Creating PNG thumbnail and saving to memory stream");
+                                    thumbnail.Save(memoryStream, ImageFormat.Png);
+                                    memoryStream.Position = 0;
 
-                                        _logger.LogInformation("Updating entity with thumbnail before saving");
-                                        entity.SetValue(_mediaFileManager, _mediaUrlGeneratorCollection, _shortStringHelper, _contentTypeBaseServiceProvider, _configuration.ThumbnailAlias, _configuration.ThumbnailFileName, memoryStream);
-                                    }
+                                    _logger.LogInformation("Updating entity with thumbnail before saving");
+                                    entity.SetValue(_mediaFileManager, _mediaUrlGeneratorCollection, _shortStringHelper, _contentTypeBaseServiceProvider, _configuration.ThumbnailAlias, _configuration.ThumbnailFileName, memoryStream);
                                 }
                             }
                             catch (Exception ex)

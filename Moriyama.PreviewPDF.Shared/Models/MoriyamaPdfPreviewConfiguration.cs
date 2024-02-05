@@ -1,4 +1,4 @@
-﻿namespace Moriyama.PreviewPDF.Ghostscript.Models
+﻿namespace Moriyama.PreviewPDF.Shared.Models
 {
     public class MoriyamaPdfPreviewConfiguration
     {

@@ -60,6 +60,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Moriyama.PreviewPDF.Shared\Moriyama.PreviewPDF.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Content Update="App_Plugins\Moriyama.PreviewPDF.Ghostscript\package.manifest">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>

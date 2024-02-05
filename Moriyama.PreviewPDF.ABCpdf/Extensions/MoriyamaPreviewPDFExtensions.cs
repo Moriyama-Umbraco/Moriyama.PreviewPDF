@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Moriyama.PreviewPDF.Ghostscript.NotificationHandlers;
+using Moriyama.PreviewPDF.ABCpdf.NotificationHandlers;
 using Moriyama.PreviewPDF.Shared;
 using Moriyama.PreviewPDF.Shared.Models;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Core.Notifications;
 
-namespace Moriyama.PreviewPDF.Ghostscript.Extensions
+namespace Moriyama.PreviewPDF.ABCpdf.Extensions
 {
     public static class MoriyamaPreviewPDFExtensions
     {
