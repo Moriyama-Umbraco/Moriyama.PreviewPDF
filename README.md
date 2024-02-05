@@ -23,7 +23,7 @@ Please review the licensing which can be found here:
 ## ABCpdf
 It makes use of the [ABCpdf](https://www.websupergoo.com/abcpdf-1.aspx) library
 
-You will need ti purchase a license, you can puchase that here:
+You will need to purchase a license, you can purchase that here:
 [https://www.ghostscript.com/licensing/index.html](https://www.ghostscript.com/licensing/index.html)
 
 ## Getting started
