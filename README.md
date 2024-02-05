@@ -1,6 +1,6 @@
-# Moriyama.PreviewPDF.Ghostscript
+# Moriyama.PreviewPDF
 
-Moriyama.PreviewPDF.Ghostscript is a package which automatically generates a thumbnail png when uploading a PDF to the Umbraco CMS Media section.
+Moriyama.PreviewPDF are packages which automatically generates a thumbnail png when uploading a PDF to the Umbraco CMS Media section.
 
 ## Compatibility
 
@@ -8,11 +8,23 @@ Moriyama.PreviewPDF.Ghostscript is a package which automatically generates a thu
 
 This has been tested and compiled against **Umbraco V10 (DotNet 6)** and **Umbraco V13 (DotNet 8)** no other versions are officially supported.
 
+There are two versions of the package
+
+## Ghostscript
 It makes use of the [Ghostscript](https://www.ghostscript.com/) library, when installing the NuGet package it will add both the Windows x86 and x64 DLLs into your project.
 
 The current version used is: 10.02.1
 
 This package also uses the prerelease version of [Ghostscript.Core](https://github.com/porrey/Ghostscript.NET)
+
+Please review the licensing which can be found here:
+[https://www.ghostscript.com/licensing/index.html](https://www.ghostscript.com/licensing/index.html)
+
+## ABCpdf
+It makes use of the [ABCpdf](https://www.websupergoo.com/abcpdf-1.aspx) library
+
+You will need ti purchase a license, you can puchase that here:
+[https://www.ghostscript.com/licensing/index.html](https://www.ghostscript.com/licensing/index.html)
 
 ## Getting started
 
