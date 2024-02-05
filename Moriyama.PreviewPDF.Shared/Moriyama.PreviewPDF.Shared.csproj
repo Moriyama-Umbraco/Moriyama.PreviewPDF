@@ -15,7 +15,7 @@
 		<Company>Moriyama</Company>
 		<Copyright>(c) 2024 Moriyama</Copyright>
 		<Authors>AaronSadlerUK</Authors>
-		<Version>1.0.6</Version>
+		<Version>1.0.0</Version>
 		<PackageProjectUrl>https://github.com/Moriyama-Umbraco/Moriyama.PreviewPDF</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Moriyama-Umbraco/Moriyama.PreviewPDF</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
