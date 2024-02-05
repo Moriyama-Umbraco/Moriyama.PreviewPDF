@@ -6,6 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<PackageId>Moriyama.PreviewPDF.Shared</PackageId>
+		<Product>Moriyama.PreviewPDF.Shared</Product>
+		<Title>Moriyama.PreviewPDF.Shared</Title>
+		<Description>Shared library for the Moriyama.PreviewPDF packages</Description>
+		<PackageTags>umbraco plugin package</PackageTags>
+		<Company>Moriyama</Company>
+		<Copyright>(c) 2024 Moriyama</Copyright>
+		<Authors>AaronSadlerUK</Authors>
+		<Version>1.0.6</Version>
+	</PropertyGroup>
+
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="10.8.3" />
 		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.8.3" />
