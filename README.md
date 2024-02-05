@@ -26,6 +26,19 @@ It makes use of the [ABCpdf](https://www.websupergoo.com/abcpdf-1.aspx) library
 You will need to purchase a license, you can purchase that here:
 [https://www.ghostscript.com/licensing/index.html](https://www.ghostscript.com/licensing/index.html)
 
+If you choose to use the ABCpdf package, you will need to add or update the following appsetting in your `appsettings.json` file:
+
+```
+{
+    "Umbraco": {
+        "TypeFinder": {
+        "AssembliesAcceptingLoadExceptions": "*",
+        "AdditionalAssemblyExclusionEntries": [ "WindowsBase", "PresentationFramework", "ReachFramework", "PresentationCore" ]
+      }
+    }
+}
+```
+
 ## Getting started
 
 You will need to edit the **Article** Media Type, this can be found under **Settings -> Media Types -> Article**
