@@ -105,4 +105,5 @@ jobs:
           files: |
             ./build.out/Moriyama.PreviewPDF.ABCpdf.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg
             ./build.out/Moriyama.PreviewPDF.Ghostscript.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg
+            ./build.out/Moriyama.PreviewPDF.IronPDF.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg
             ./build.out/Moriyama.PreviewPDF.Shared.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg
