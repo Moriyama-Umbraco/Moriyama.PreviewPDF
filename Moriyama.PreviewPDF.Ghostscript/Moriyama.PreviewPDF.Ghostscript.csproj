@@ -16,6 +16,9 @@
 		<Copyright>(c) 2024 Moriyama</Copyright>
 		<Authors>AaronSadlerUK</Authors>
 		<Version>1.0.6</Version>
+		<PackageProjectUrl>https://github.com/Moriyama-Umbraco/Moriyama.PreviewPDF</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/Moriyama-Umbraco/Moriyama.PreviewPDF</RepositoryUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -57,6 +60,13 @@
 	<ItemGroup>
 		<Content Include="App_Plugins\Moriyama.PreviewPDF.Ghostscript\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
 		<None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -16,6 +16,9 @@
 		<Copyright>(c) 2024 Moriyama</Copyright>
 		<Authors>AaronSadlerUK</Authors>
 		<Version>1.0.6</Version>
+		<PackageProjectUrl>https://github.com/Moriyama-Umbraco/Moriyama.PreviewPDF</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Moriyama-Umbraco/Moriyama.PreviewPDF</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
@@ -26,6 +29,13 @@
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.3" />
 		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
