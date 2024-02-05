@@ -46,6 +46,18 @@
 	  </Content>
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <None Include="..\icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="IronPdf" Version="2024.2.2" />
   </ItemGroup>
