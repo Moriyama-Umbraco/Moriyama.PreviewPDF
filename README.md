@@ -24,7 +24,7 @@ Please review the licensing which can be found here:
 It makes use of the [ABCpdf](https://www.websupergoo.com/abcpdf-1.aspx) library
 
 You will need to purchase a license, you can purchase that here:
-[https://www.ghostscript.com/licensing/index.html](https://www.ghostscript.com/licensing/index.html)
+[https://www.websupergoo.com/abcpdf-1.aspx](https://www.websupergoo.com/abcpdf-1.aspx)
 
 If you choose to use the ABCpdf package, you will need to add or update the following appsetting in your `appsettings.json` file:
 
