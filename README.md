@@ -8,7 +8,7 @@ Moriyama.PreviewPDF are packages which automatically generates a thumbnail png w
 
 This has been tested and compiled against **Umbraco V10 (DotNet 6)** and **Umbraco V13 (DotNet 8)** no other versions are officially supported.
 
-There are two versions of the package
+There are three versions of the package
 
 ## Ghostscript
 It makes use of the [Ghostscript](https://www.ghostscript.com/) library, when installing the NuGet package it will add both the Windows x86 and x64 DLLs into your project.
@@ -35,6 +35,45 @@ If you choose to use the ABCpdf package, you will need to add or update the foll
             "TypeFinder": {
             "AssembliesAcceptingLoadExceptions": "*",
             "AdditionalAssemblyExclusionEntries": [ "WindowsBase", "PresentationFramework", "ReachFramework", "PresentationCore" ]
+            }
+        }
+    }
+}
+```
+
+## IronPDF
+It makes use of the [IronPDF](https://ironpdf.com/) library
+
+You will need to purchase a license, you can purchase that here:
+[https://ironpdf.com/licensing/](https://ironpdf.com/licensing/)
+
+If you choose to use the IronPDF package, you will need to add or update the following appsetting in your `appsettings.json` file:
+
+```
+{
+    "Umbraco": {
+        "CMS": {
+            "TypeFinder": {
+            "AssembliesAcceptingLoadExceptions": "*",
+            "AdditionalAssemblyExclusionEntries": [
+                "SkiaSharp",
+                "PdfToSvg",
+                "Ninject",
+                "ZXing.ImageSharp.V2",
+                "zxing",
+                "DocumentFormat.OpenXml",
+                "OpenXmlPowerTools",
+                "Markdig.Signed",
+                "RtfPipe",
+                "DotNetZip",
+                "Babel.Licensing",
+                "Azure.Data.Tables",
+                "DeviceId.Windows",
+                "DeviceId.Linux",
+                "DeviceId.Mac",
+                "DeviceId",
+                "BouncyCastle.Crypto"
+            ]
             }
         }
     }
