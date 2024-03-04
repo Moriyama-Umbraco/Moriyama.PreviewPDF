@@ -12,7 +12,7 @@
 		<Product>Moriyama.PreviewPDF.Ghostscript</Product>
 		<Title>Moriyama.PreviewPDF.Ghostscript</Title>
 		<Description>A package which creates a thumbnail for a PDF uploaded to the Umbraco CMS media section using Ghostscript</Description>
-		<PackageTags>umbraco plugin package</PackageTags>
+		<PackageTags>umbraco plugin package umbraco-marketplace</PackageTags>
 		<Company>Moriyama</Company>
 		<Copyright>(c) 2024 Moriyama</Copyright>
 		<Authors>AaronSadlerUK</Authors>

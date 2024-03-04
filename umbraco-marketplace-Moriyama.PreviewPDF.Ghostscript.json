@@ -1,0 +1,22 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+    "AuthorDetails": {
+      "Name": "Moriyama",
+      "Description": "Moriyama are Umbraco, Azure DevOps and Data Migration experts",
+      "Url": "https://moriyama.co.uk",
+      "Contributors": [
+        {
+          "Name": "AaronSadlerUK",
+          "Url": "https://github.com/AaronSadlerUK"
+        }
+      ],
+      "SyncContributorsFromRepository": true
+    },
+    "Category": "Editor Tools",
+    "Description": "Moriyama.PreviewPDF are packages which automatically generates a thumbnail png when uploading a PDF to the Umbraco CMS Media section.",
+    "LicenseTypes": [ "Free" ],
+    "IssueTrackerUrl": "https://github.com/Moriyama-Umbraco/Moriyama.PreviewPDF/issues",
+    "PackageType": "Package",
+    "Tags": [],
+    "Title": "Moriyama.PreviewPDF.Ghostscript"
+  }
