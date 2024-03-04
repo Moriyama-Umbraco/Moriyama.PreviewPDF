@@ -12,7 +12,7 @@
 		<Product>Moriyama.PreviewPDF.IronPDF</Product>
 		<Title>Moriyama.PreviewPDF.IronPDF</Title>
 		<Description>A package which creates a thumbnail for a PDF uploaded to the Umbraco CMS media section using IronPDF</Description>
-		<PackageTags>umbraco plugin package</PackageTags>
+		<PackageTags>umbraco plugin package umbraco-marketplace</PackageTags>
 		<Company>Moriyama</Company>
 		<Copyright>(c) 2024 Moriyama</Copyright>
 		<Authors>AaronSadlerUK</Authors>
