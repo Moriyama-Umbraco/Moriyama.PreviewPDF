@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<MoriyamaPreviewPDFGhostscriptContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Moriyama.PreviewPDF.Ghostscript\**\*.*</MoriyamaPreviewPDFGhostscriptContentFilesPath>
+	</PropertyGroup>
+
+	<Target Name="CopyMoriyamaPreviewPDFGhostscriptAssets" BeforeTargets="BeforeBuild">
+		<ItemGroup>
+			<MoriyamaPreviewPDFGhostscriptContentFiles Include="$(MoriyamaPreviewPDFGhostscriptContentFilesPath)" />
+		</ItemGroup>
+		<Message Text="Copying Moriyama.PreviewPDF.Ghostscript files: $(MoriyamaPreviewPDFGhostscriptContentFilesPath) - #@(MoriyamaPreviewPDFGhostscriptContentFiles->Count()) files" Importance="high" />
+		<Copy SourceFiles="@(MoriyamaPreviewPDFGhostscriptContentFiles)" DestinationFiles="@(MoriyamaPreviewPDFGhostscriptContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Moriyama.PreviewPDF.Ghostscript\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+	</Target>
+
+	<Target Name="ClearMoriyamaPreviewPDFGhostscriptAssets" BeforeTargets="Clean">
+		<ItemGroup>
+			<MoriyamaPreviewPDFGhostscriptDir Include="$(MSBuildProjectDirectory)\App_Plugins\Moriyama.PreviewPDF.Ghostscript\" />
+		</ItemGroup>
+		<Message Text="Clear old Moriyama.PreviewPDF.Ghostscript data" Importance="high" />
+		<RemoveDir Directories="@(MoriyamaPreviewPDFGhostscriptDir)" />
+	</Target>
+</Project>

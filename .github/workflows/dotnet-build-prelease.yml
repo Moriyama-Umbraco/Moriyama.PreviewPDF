@@ -1,0 +1,109 @@
+name: Package up Prerelease.
+
+on:
+  push:
+    branches:
+      - develop
+      - releases/*
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+    
+    env:
+      CONFIG: 'Release'
+      OUT_FOLDER: './build.out/'
+
+    steps:
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.x
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+          versionSpec: '5.x'
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Retrieve cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-moriyama-previewpdf
+
+      - name: Determine Version with GitVersion (MSBuild in Proj will do this)
+        id:   gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.15
+        with:
+          useConfigFile: true
+          configFilePath: ./GitVersion.yml
+
+      - name: Display GitVersion SemVer
+        run: |
+          echo "FullSemVer: ${{ steps.gitversion.outputs.nuGetVersionV2 }}"
+      
+      # ------------------------
+      # actual builds / packages 
+      # ------------------------
+      - name: Restore Moriyama.PreviewPDF.Shared
+        run: dotnet restore ./Moriyama.PreviewPDF.Shared/Moriyama.PreviewPDF.Shared.csproj
+
+      - name: Restore Moriyama.PreviewPDF.ABCpdf
+        run: dotnet restore ./Moriyama.PreviewPDF.ABCpdf/Moriyama.PreviewPDF.ABCpdf.csproj
+
+      - name: Restore Moriyama.PreviewPDF.Ghostscript
+        run: dotnet restore ./Moriyama.PreviewPDF.Ghostscript/Moriyama.PreviewPDF.Ghostscript.csproj
+
+      - name: Restore Moriyama.PreviewPDF.IronPDF
+        run: dotnet restore ./Moriyama.PreviewPDF.IronPDF/Moriyama.PreviewPDF.IronPDF.csproj
+
+      - name: Build Moriyama.PreviewPDF.Shared
+        run: dotnet pack ./Moriyama.PreviewPDF.Shared/Moriyama.PreviewPDF.Shared.csproj --no-restore -c ${{env.CONFIG}} --output ${{env.OUT_FOLDER}} /p:version=${{steps.gitversion.outputs.nuGetVersionV2}}
+
+      - name: Build Moriyama.PreviewPDF.ABCpdf
+        run: dotnet pack ./Moriyama.PreviewPDF.ABCpdf/Moriyama.PreviewPDF.ABCpdf.csproj --no-restore -c ${{env.CONFIG}} --output ${{env.OUT_FOLDER}} /p:version=${{steps.gitversion.outputs.nuGetVersionV2}}
+
+      - name: Build Moriyama.PreviewPDF.Ghostscript
+        run: dotnet pack ./Moriyama.PreviewPDF.Ghostscript/Moriyama.PreviewPDF.Ghostscript.csproj --no-restore -c ${{env.CONFIG}} --output ${{env.OUT_FOLDER}} /p:version=${{steps.gitversion.outputs.nuGetVersionV2}}
+
+      - name: Build Moriyama.PreviewPDF.IronPDF
+        run: dotnet pack ./Moriyama.PreviewPDF.IronPDF/Moriyama.PreviewPDF.IronPDF.csproj --no-restore -c ${{env.CONFIG}} --output ${{env.OUT_FOLDER}} /p:version=${{steps.gitversion.outputs.nuGetVersionV2}}
+
+      - name: Push to Moriyama GitHub Nuget Repo
+        if: ${{ github.event_name != 'pull_request' }}
+        run: |
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.ABCpdf.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://nuget.pkg.github.com/Moriyama-Umbraco/index.json --api-key ${{ github.token }}
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.Ghostscript.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://nuget.pkg.github.com/Moriyama-Umbraco/index.json --api-key ${{ github.token }}
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.IronPDF.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://nuget.pkg.github.com/Moriyama-Umbraco/index.json --api-key ${{ github.token }}
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.Shared.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://nuget.pkg.github.com/Moriyama-Umbraco/index.json --api-key ${{ github.token }}
+
+      # - name: Push to Moriyama Nuget Repo
+      #   if: ${{ github.event_name != 'pull_request' }}
+      #   run: |
+      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.ABCpdf.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.Ghostscript.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.IronPDF.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.Shared.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+
+      - name: Create Release
+        uses: "softprops/action-gh-release@v0.1.15"
+        with:
+          name: ${{steps.gitversion.outputs.fullSemVer}}
+          tag_name: ${{steps.gitversion.outputs.fullSemVer}}
+          prerelease: true
+          generate_release_notes: true
+          files: |
+            ./build.out/Moriyama.PreviewPDF.ABCpdf.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg
+            ./build.out/Moriyama.PreviewPDF.Ghostscript.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg
+            ./build.out/Moriyama.PreviewPDF.IronPDF.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg
+            ./build.out/Moriyama.PreviewPDF.Shared.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg

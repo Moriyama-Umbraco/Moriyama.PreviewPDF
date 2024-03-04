@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moriyama.PreviewPDF.Ghostscript", "Moriyama.PreviewPDF.Ghostscript\Moriyama.PreviewPDF.Ghostscript.csproj", "{0397C8C7-B45B-4C1D-B674-07D93D65AC2B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSiteV13", "TestSiteV13\TestSiteV13.csproj", "{C8DA4D21-0A7E-4C18-B493-4CB4CAD29342}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moriyama.PreviewPDF.ABCpdf", "Moriyama.PreviewPDF.ABCpdf\Moriyama.PreviewPDF.ABCpdf.csproj", "{B504DE51-E4C7-4BB5-935E-C96234F85621}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moriyama.PreviewPDF.Shared", "Moriyama.PreviewPDF.Shared\Moriyama.PreviewPDF.Shared.csproj", "{60D43F1E-FAD7-40B3-834F-EFBC24BACA75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moriyama.PreviewPDF.IronPDF", "Moriyama.PreviewPDF.IronPDF\Moriyama.PreviewPDF.IronPDF.csproj", "{7C97B4A6-1DCF-4B42-B829-255B74EAA55C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0397C8C7-B45B-4C1D-B674-07D93D65AC2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0397C8C7-B45B-4C1D-B674-07D93D65AC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0397C8C7-B45B-4C1D-B674-07D93D65AC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0397C8C7-B45B-4C1D-B674-07D93D65AC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8DA4D21-0A7E-4C18-B493-4CB4CAD29342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8DA4D21-0A7E-4C18-B493-4CB4CAD29342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8DA4D21-0A7E-4C18-B493-4CB4CAD29342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8DA4D21-0A7E-4C18-B493-4CB4CAD29342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B504DE51-E4C7-4BB5-935E-C96234F85621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B504DE51-E4C7-4BB5-935E-C96234F85621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B504DE51-E4C7-4BB5-935E-C96234F85621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B504DE51-E4C7-4BB5-935E-C96234F85621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D43F1E-FAD7-40B3-834F-EFBC24BACA75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D43F1E-FAD7-40B3-834F-EFBC24BACA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D43F1E-FAD7-40B3-834F-EFBC24BACA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D43F1E-FAD7-40B3-834F-EFBC24BACA75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C97B4A6-1DCF-4B42-B829-255B74EAA55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C97B4A6-1DCF-4B42-B829-255B74EAA55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C97B4A6-1DCF-4B42-B829-255B74EAA55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C97B4A6-1DCF-4B42-B829-255B74EAA55C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB89CE8A-7060-45EF-BC32-081E3C3C5973}
+	EndGlobalSection
+EndGlobal

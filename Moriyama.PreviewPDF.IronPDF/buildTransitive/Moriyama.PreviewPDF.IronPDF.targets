@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<MoriyamaPreviewPDFIronPDFContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Moriyama.PreviewPDF.IronPDF\**\*.*</MoriyamaPreviewPDFIronPDFContentFilesPath>
+	</PropertyGroup>
+
+	<Target Name="CopyMoriyamaPreviewPDFIronPDFAssets" BeforeTargets="BeforeBuild">
+		<ItemGroup>
+			<MoriyamaPreviewPDFIronPDFContentFiles Include="$(MoriyamaPreviewPDFIronPDFContentFilesPath)" />
+		</ItemGroup>
+		<Message Text="Copying Moriyama.PreviewPDF.IronPDF files: $(MoriyamaPreviewPDFIronPDFContentFilesPath) - #@(MoriyamaPreviewPDFIronPDFContentFiles->Count()) files" Importance="high" />
+		<Copy SourceFiles="@(MoriyamaPreviewPDFIronPDFContentFiles)" DestinationFiles="@(MoriyamaPreviewPDFIronPDFContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Moriyama.PreviewPDF.IronPDF\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+	</Target>
+
+	<Target Name="ClearMoriyamaPreviewPDFIronPDFAssets" BeforeTargets="Clean">
+		<ItemGroup>
+			<MoriyamaPreviewPDFIronPDFDir Include="$(MSBuildProjectDirectory)\App_Plugins\Moriyama.PreviewPDF.IronPDF\" />
+		</ItemGroup>
+		<Message Text="Clear old Moriyama.PreviewPDF.IronPDF data" Importance="high" />
+		<RemoveDir Directories="@(MoriyamaPreviewPDFIronPDFDir)" />
+	</Target>
+</Project>

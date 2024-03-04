@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<MoriyamaPreviewPDFABCpdfContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Moriyama.PreviewPDF.ABCpdf\**\*.*</MoriyamaPreviewPDFABCpdfContentFilesPath>
+	</PropertyGroup>
+
+	<Target Name="CopyMoriyamaPreviewPDFABCpdfAssets" BeforeTargets="BeforeBuild">
+		<ItemGroup>
+			<MoriyamaPreviewPDFABCpdfContentFiles Include="$(MoriyamaPreviewPDFABCpdfContentFilesPath)" />
+		</ItemGroup>
+		<Message Text="Copying Moriyama.PreviewPDF.ABCpdf files: $(MoriyamaPreviewPDFABCpdfContentFilesPath) - #@(MoriyamaPreviewPDFABCpdfContentFiles->Count()) files" Importance="high" />
+		<Copy SourceFiles="@(MoriyamaPreviewPDFABCpdfContentFiles)" DestinationFiles="@(MoriyamaPreviewPDFABCpdfContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Moriyama.PreviewPDF.ABCpdf\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+	</Target>
+
+	<Target Name="ClearMoriyamaPreviewPDFABCpdfAssets" BeforeTargets="Clean">
+		<ItemGroup>
+			<MoriyamaPreviewPDFABCpdfDir Include="$(MSBuildProjectDirectory)\App_Plugins\Moriyama.PreviewPDF.ABCpdf\" />
+		</ItemGroup>
+		<Message Text="Clear old Moriyama.PreviewPDF.ABCpdf data" Importance="high" />
+		<RemoveDir Directories="@(MoriyamaPreviewPDFABCpdfDir)" />
+	</Target>
+</Project>
