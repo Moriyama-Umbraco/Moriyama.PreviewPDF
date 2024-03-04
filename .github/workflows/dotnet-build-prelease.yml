@@ -87,13 +87,13 @@ jobs:
           dotnet nuget push ./build.out/Moriyama.PreviewPDF.IronPDF.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://nuget.pkg.github.com/Moriyama-Umbraco/index.json --api-key ${{ github.token }}
           dotnet nuget push ./build.out/Moriyama.PreviewPDF.Shared.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://nuget.pkg.github.com/Moriyama-Umbraco/index.json --api-key ${{ github.token }}
 
-      # - name: Push to Moriyama Nuget Repo
-      #   if: ${{ github.event_name != 'pull_request' }}
-      #   run: |
-      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.ABCpdf.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
-      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.Ghostscript.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
-      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.IronPDF.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
-      #     dotnet nuget push ./build.out/Moriyama.PreviewPDF.Shared.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      - name: Push to Moriyama Nuget Repo
+        if: ${{ github.event_name != 'pull_request' }}
+        run: |
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.ABCpdf.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.Ghostscript.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.IronPDF.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+          dotnet nuget push ./build.out/Moriyama.PreviewPDF.Shared.${{steps.gitversion.outputs.nuGetVersionV2}}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
       - name: Create Release
         uses: "softprops/action-gh-release@v0.1.15"
